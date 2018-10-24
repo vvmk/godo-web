@@ -35,7 +35,16 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $board = Board::create([
+            'user_id' => auth()->id(),
+            'name' => $request->name,
+        ]);
+
+        // TODO: return appropriate response for CLI consumption.
     }
 
     /**
@@ -44,9 +53,13 @@ class BoardController extends Controller
      * @param  \App\Board  $board
      * @return \Illuminate\Http\Response
      */
-    public function show(Board $board)
+    public function show(string $name)
     {
-        //
+        $board = Board::where('name', $name)->get();
+
+        $todos = $board->todos;
+
+        return view('boards.show', compact('board', 'todos'));
     }
 
     /**

@@ -10,7 +10,7 @@ use \App\Todo;
 class Board extends Model
 {
     protected $fillable = [
-        'name',
+        "name",
     ];
 
     public function creator() {
