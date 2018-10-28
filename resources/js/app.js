@@ -1,6 +1,11 @@
-require('./bootstrap');
+import Vue from 'vue';
+import axios from 'axios';
 
-window.Vue = require('vue');
+window.Vue =  Vue;
+window.axios = axios;
+
+// require('./bootstrap.js');
+import './bootstrap.js';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

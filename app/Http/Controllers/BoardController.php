@@ -14,7 +14,9 @@ class BoardController extends Controller
      */
     public function index()
     {
-        //
+        $boards = Board::latest()->get();
+
+        return view('boards.index', compact('boards'));
     }
 
     /**
@@ -55,9 +57,9 @@ class BoardController extends Controller
      */
     public function show(string $name)
     {
-        $board = Board::where('name', $name)->get();
+        $board = Board::where('name', $name)->first();
 
-        $todos = $board->todos;
+        $todos = $board->todos();
 
         return view('boards.show', compact('board', 'todos'));
     }
