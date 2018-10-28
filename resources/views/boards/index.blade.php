@@ -8,7 +8,7 @@
                     <p class="panel-heading">My Boards</p>
                     @foreach ($boards as $board)
                         <div class="panel-block">
-                                <h4>{{ $board->name }}</h4>
+                            <a class="is-size-4" href="{{ $board->path() }}">{{ $board->name }}</a>
                         </div>
                     @endforeach
                 </div>

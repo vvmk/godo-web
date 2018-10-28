@@ -1,20 +1,24 @@
 webpackJsonp([1],{
 
-/***/ 11:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/app.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(12);
-module.exports = __webpack_require__(34);
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap_js__ = __webpack_require__("./resources/js/bootstrap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bootstrap_js__);
 
 
-/***/ }),
 
-/***/ 12:
-/***/ (function(module, exports, __webpack_require__) {
+window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
+window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
-__webpack_require__(13);
+// require('./bootstrap.js');
 
-window.Vue = __webpack_require__(10);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -24,22 +28,21 @@ window.Vue = __webpack_require__(10);
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-var app = new Vue({
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
 });
 
 /***/ }),
 
-/***/ 13:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/js/bootstrap.js":
+/***/ (function(module, exports) {
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
-window.axios = __webpack_require__(3);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -59,11 +62,20 @@ if (token) {
 
 /***/ }),
 
-/***/ 34:
+/***/ "./resources/sass/app.scss":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
+/***/ }),
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("./resources/js/app.js");
+module.exports = __webpack_require__("./resources/sass/app.scss");
+
+
 /***/ })
 
-},[11]);
+},[0]);

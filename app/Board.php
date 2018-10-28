@@ -13,6 +13,10 @@ class Board extends Model
         "name",
     ];
 
+    public function path() {
+        return '/boards/' . $this->name;
+    }
+
     public function creator() {
         return $this->belongsTo(User::class)->first();
     }
