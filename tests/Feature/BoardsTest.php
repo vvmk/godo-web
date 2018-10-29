@@ -5,23 +5,31 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class BoardTest extends TestCase
-{
+class BoardTest extends TestCase {
+
     use RefreshDatabase;
 
-    public function test_a_user_can_browse_boards()
-    {
-        $board = factory('App\Board')->create();
+    public function setUp() {
+        parent::setUp();
 
+        $this->board = factory('App\Board')->create();
+    }
+
+    public function test_a_user_can_browse_boards() {
         $response = $this->get('/boards');
-        $response->assertSee($board->name);
+        $response->assertSee($this->board->name);
 
     }
     
     public function test_a_user_can_view_a_board() {
-        $board = factory('App\Board')->create();
+        $response = $this->get('/boards/' . $this->board->name);
+        $response->assertSee($this->board->name);
+    }
 
-        $response = $this->get('/boards/' . $board->name);
-        $response->assertSee($board->name);
+    public function test_a_user_can_read_todos_on_a_board() {
+        $todo = factory('App\Todo')->create(['board_id' => $this->board->id]);
+
+        $this->get('/boards/' . $this->board->id)
+            ->assertSee($todo->body);
     }
 }
