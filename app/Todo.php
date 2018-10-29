@@ -18,6 +18,17 @@ class Todo extends Model
         return $this->belongsTo(Board::class);
     }
 
+    /*
+     * The above board() function works as it is because the owning resource is
+     * 'Board'. If you wanted to call it something like 'owner()', it 
+     * becomes necessary to pass a foreign key to 'belongsTo()'...
+     *
+     *      return $this->belongsTo(Board::class, 'board_id');
+     *
+     * ...otherwise laravel will look for a foreign key
+     * called 'owner_id'.
+     */
+
     public function creator() {
         return $this->belongsTo(User::class);
     }
