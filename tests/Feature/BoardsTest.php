@@ -15,6 +15,10 @@ class BoardTest extends TestCase {
         $this->board = factory('App\Board')->create();
     }
 
+    public function test_board_path() {
+        $this->assertEquals('/boards/' . $this->board->name, $this->board->path());
+    }
+
     public function test_a_user_can_browse_boards() {
         $response = $this->get('/boards');
         $response->assertSee($this->board->name);

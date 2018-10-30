@@ -31,6 +31,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function path() {
+        return '/users/' . $this->name;
+    }
+
     public function boards() {
         return $this->hasMany(Board::class);
     }
