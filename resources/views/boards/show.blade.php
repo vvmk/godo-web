@@ -11,9 +11,11 @@
                 @if($todo->completed)
                     <i class="has-text-success fas fa-check" aria-hidden="true"></i>
                 @else
-                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    <i class="far fa-square"></i>
                 @endif
                 <span>&nbsp;{{ $todo->description }}</span>
+
+                <a class="" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a>added {{ $todo->created_at->diffForHumans() }}
             </a>
         @endforeach
     </div>
