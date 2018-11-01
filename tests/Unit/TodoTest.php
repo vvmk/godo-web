@@ -23,4 +23,12 @@ class TodoTest extends TestCase
     public function test_it_has_a_creator() {
         $this->assertInstanceOf('App\User', $this->todo->creator);
     }
+
+    public function test_it_can_be_marked_done() {
+        // when todo->markDone()
+        $this->todo->markDone();
+
+        // then todo->completed should be true
+        $this->assertTrue($this->todo->completed);
+    }
 }
