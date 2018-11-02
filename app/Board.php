@@ -24,4 +24,8 @@ class Board extends Model
     public function todos() {
         return $this->hasMany(Todo::class);
     }
+
+    public function addTodo($todo) {
+        $this->todos()->create($todo);
+    }
 }

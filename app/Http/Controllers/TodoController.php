@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
+use App\Board;
 
 class TodoController extends Controller
 {
@@ -14,9 +15,14 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Board $board)
     {
-        //
+        $board->addTodo([
+            'description' => request('description'),
+            'user_id' => auth()->id(),
+        ]);
+
+        return back();
     }
 
     public function complete(Request $request, Todo $todo)

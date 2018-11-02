@@ -11,7 +11,7 @@ class Todo extends Model
 {
     protected $fillable = [
         'description',
-        'completed',
+        'user_id',
     ];
 
     public function board() {
