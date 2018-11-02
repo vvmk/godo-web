@@ -26,14 +26,14 @@ class BoardTest extends TestCase {
     }
     
     public function test_a_user_can_view_a_board() {
-        $response = $this->get('/boards/' . $this->board->name);
+        $response = $this->get($this->board->path());
         $response->assertSee($this->board->name);
     }
 
     public function test_a_user_can_read_todos_on_a_board() {
         $todo = factory('App\Todo')->create(['board_id' => $this->board->id]);
 
-        $this->get('/boards/' . $this->board->id)
+        $this->get($this->board->path())
             ->assertSee($todo->body);
     }
 
@@ -43,6 +43,5 @@ class BoardTest extends TestCase {
         $this->put('/todos/' . $todo->id . '/complete');
 
         $this->assertTrue($todo->completed);
-        
     }
 }

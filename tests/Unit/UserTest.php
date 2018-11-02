@@ -17,12 +17,12 @@ class UserTest extends TestCase
     }
 
     public function test_user_path() {
-        $this->assertEquals('/users/' . $this->user->name, $this->user->path());
+        $this->assertEquals('/users/' . $this->user->id, $this->user->path());
     }
 
-    /* public function test_user_has_a_profile_page() { */
-    /*     $response = $this->get('/users/' . $this->user->id); */
+    public function test_user_has_a_profile_page() {
+        $response = $this->get($this->user->path());
 
-    /*     $response->assertSee($this->user->name); */ 
-    /* } */
+        $response->assertSee($this->user->name); 
+    }
 }
