@@ -36,4 +36,13 @@ class BoardTest extends TestCase {
         $this->get('/boards/' . $this->board->id)
             ->assertSee($todo->body);
     }
+
+    public function test_a_user_can_mark_todos_as_done() {
+        $todo = factory('App\Todo')->create(['board_id' => $this->board->id]);
+
+        $this->put('/todos/' . $todo->id . '/complete');
+
+        $this->assertTrue($todo->completed);
+        
+    }
 }

@@ -1,16 +1,16 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-    <h1>{{ $user }}</h1>
+    <h1 class="subtitle is-2">{{ $user->name }}</h1>
     <div class="columns">
         <div class="column is-3">
             <aside class="is-medium menu">
-                <p class="menu-label">Categories</p>
+                <p class="menu-label">First Level</p>
                 <ul class="menu-list">
                     <li>Cat 1</li>
                     <li>Cat 2</li>
                     <li>Cat 3</li>
-                    <p class="menu-label">Other Stuff</p>
+                    <p class="menu-label">Second Level</p>
                     <ul class="menu-list">
                         <li><span class="tag is-white is-medium">Lorem</span></li>
                         <li><span class="tag is-white is-medium">Ipsum</span></li>
@@ -34,14 +34,14 @@
                         @foreach($board->todos as $todo)
                         <div class="message-body">
                             @if($todo->completed)
-                            <i class="has-text-success fas fa-check" aria-hidden="true"></i>
+                                <i class="has-text-success fas fa-check" aria-hidden="true"></i>
                             @else
-                            <i class="far fa-square"></i>
+                                <i class="far fa-square"></i>
                             @endif
 
                             <span>&nbsp;{{ $todo->description }}</span>
 
-                            <a class="" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a>added {{ $todo->created_at->diffForHumans() }}
+                            <a class="" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a> added {{ $todo->created_at->diffForHumans() }}
                         </div>
                         @endforeach
                     </article>

@@ -9,4 +9,5 @@ Route::get('/boards/{name}', 'BoardController@show');
 
 Route::get('/users/{id}', 'HomeController@show');
     
+Route::put('/todos/{id}/complete', 'TodoController@complete');
 

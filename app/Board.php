@@ -18,10 +18,10 @@ class Board extends Model
     }
 
     public function creator() {
-        return $this->belongsTo(User::class)->first();
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function todos() {
-        return $this->hasMany(Todo::class)->get();
+        return $this->hasMany(Todo::class);
     }
 }

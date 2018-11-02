@@ -3,9 +3,9 @@
 
 <div class="content">
     <div class="panel">
-        <p class="panel-heading">
-            {{ $board->name }}
-        </p>
+        <div class="panel-heading">
+            {{ $board->name }} by <a href="{{ $board->creator->path() }}">{{ $board->creator->name }}</a>
+        </div>
         @foreach($todos as $todo)
             <a class="panel-block">
                 @if($todo->completed)

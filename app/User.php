@@ -32,7 +32,7 @@ class User extends Authenticatable
     ];
 
     public function path() {
-        return '/users/' . $this->name;
+        return '/users/' . $this->id;
     }
 
     public function boards() {
