@@ -21,6 +21,8 @@ class UserTest extends TestCase
     }
 
     public function test_user_has_a_profile_page() {
+        $this->signIn($this->user);
+
         $response = $this->get($this->user->path());
 
         $response->assertSee($this->user->name); 
