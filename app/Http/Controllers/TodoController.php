@@ -9,12 +9,12 @@ use App\Board;
 class TodoController extends Controller
 {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct() {
+        /* $this->middleware('auth'); */
+        // Above line will protect them all, I just don't want to forget how to do this again.
+        $this->middleware('auth', ['only' => ['store', 'complete', 'destroy']]);;
+    }
+
     public function store(Board $board)
     {
         $board->addTodo([
