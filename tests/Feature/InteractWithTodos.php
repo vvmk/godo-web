@@ -14,21 +14,25 @@ class InteractWithTodos extends TestCase
         $this->assertTrue(false);
     }
 
+    public function test_unauthenticated_users_may_not_add_todos() {
+        $this-> expectException('Illuminate\Auth\AuthenticationException');
+
+        $todo = factory('App\Todo')->create();
+        $this->post('/boards/eos/todos');
+    }
+
     public function test_an_authenticated_user_can_create_todos() {
 
         $this->signIn(factory('App\User')->create());
 
         $board = factory('App\Board')->create();
 
-        // when user adds a todo to the board
-        $todo = factory('App\Todo')->create();
+        $todo = factory('App\Todo')->make();
         $this->post($board->path() . '/todos', $todo->toArray());
 
-        // then their todo should be visible on the page
         $this->get($thread->path())
             ->assertSee($todo->description);
     }
-
         /* $this->todo->markDone(); */
         /* $this->assertTrue($this->todo->completed); */
 }
