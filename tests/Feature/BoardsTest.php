@@ -43,7 +43,7 @@ class BoardTest extends TestCase {
 
         $todo = factory('App\Todo')->create(['board_id' => $this->board->id]);
 
-        $this->put('/todos/' . $todo->id . '/complete');
+        $this->patch('/todos/' . $todo->id, ['completed' => 'on']);
 
         $this->assertTrue($todo->completed);
     }

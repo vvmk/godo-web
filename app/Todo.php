@@ -12,6 +12,7 @@ class Todo extends Model
     protected $fillable = [
         'description',
         'user_id',
+        'completed',
     ];
 
     public function board() {
@@ -31,9 +32,5 @@ class Todo extends Model
 
     public function creator() {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function markDone() {
-        $this->completed = true;
     }
 }

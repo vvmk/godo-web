@@ -12,7 +12,7 @@ class TodoController extends Controller
     public function __construct() {
         /* $this->middleware('auth'); */
         // Above line will protect them all, I just don't want to forget how to do this again.
-        $this->middleware('auth', ['only' => ['store', 'complete', 'destroy']]);;
+        $this->middleware('auth', ['only' => ['store', 'update', 'destroy']]);;
     }
 
     public function store(Board $board)
@@ -25,9 +25,13 @@ class TodoController extends Controller
         return back();
     }
 
-    public function complete(Request $request, Todo $todo)
+    public function update(Request $request, Todo $todo)
     {
-        $todo->markDone();
+        $todo->update([
+            'completed' => request()->has('completed')
+        ]);
+
+        return back();
     }
 
     /**

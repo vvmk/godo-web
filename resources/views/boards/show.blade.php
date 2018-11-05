@@ -8,12 +8,14 @@
         </div>
         @foreach($todos as $todo)
             <a class="panel-block">
-                @if($todo->completed)
-                    <i class="has-text-success fas fa-check" aria-hidden="true"></i>
-                @else
-                    <i class="far fa-square"></i>
-                @endif
-                <span>&nbsp;{{ $todo->description }}</span>
+                <form method="POST" action="/todos/{{ $todo->id }}">
+                    @method('PATCH')
+                    @csrf
+                    <label class="checkbox" for="completed">
+                        <input type="checkbox" name="completed">
+                        {{ $todo->description }}
+                    </label>
+                </form>
 
                 <a class="" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a>added {{ $todo->created_at->diffForHumans() }}
             </a>
