@@ -4,9 +4,6 @@ import axios from 'axios';
 window.Vue =  Vue;
 window.axios = axios;
 
-// require('./bootstrap.js');
-import './bootstrap.js';
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,5 +13,8 @@ import './bootstrap.js';
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        dropdownActive: false,
+    }
 });

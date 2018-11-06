@@ -16,9 +16,9 @@
         @include('layouts.nav')
 
         <div id="app">
-
-            @yield('content')
-
+            <main class="container">
+                @yield('content')
+            </main>
         </div>
 
         <script src="{{ mix('js/manifest.js') }}"></script>
