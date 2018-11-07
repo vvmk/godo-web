@@ -13,9 +13,24 @@
     </head>
     <body>
 
-        @include('layouts.nav')
-
         <div id="app">
+            <hero-nav inline-template>
+                @include('layouts.nav')
+            </hero-nav>
+
+            <section class="hero is-dark">
+                <div class="hero-body">
+                    <div class="container has-text-left">
+                        <h1 class="title">
+                            //GODO:
+                        </h1>
+                        <h2 class="subtitle">
+                            CLI managed todo lists with a singe point of truth.
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
             <main class="container">
                 @yield('content')
             </main>

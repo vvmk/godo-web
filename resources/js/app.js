@@ -1,20 +1,17 @@
 import Vue from 'vue';
 import axios from 'axios';
+import HeroNav from './components/HeroNav';
 
 window.Vue =  Vue;
 window.axios = axios;
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
+new Vue({
     el: '#app',
+
     data: {
-        dropdownActive: false,
-    }
+    },
+
+    components: {
+        'hero-nav': HeroNav,
+    },
 });
