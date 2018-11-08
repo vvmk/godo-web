@@ -16,16 +16,12 @@
       <div class="navbar-end">
 
         <span class="navbar-item">
-          <a class="is-light is-inverted" href="https://github.com/vvmk" target="_blank" rel="nofollow">
-            <span class="icon">
+          <a class="is-light is-inverted" href="https://github.com/vvmk/godo-web" target="_blank" rel="nofollow">
+            <span class="icon has-text-light">
               <i class="fab fa-github"></i>
             </span>
           </a>
         </span>
-
-        <a class="navbar-item" href="/home">
-          Home
-        </a>
 
         <a class="navbar-item" href="/boards">
           Boards
