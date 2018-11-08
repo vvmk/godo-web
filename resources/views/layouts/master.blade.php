@@ -14,6 +14,7 @@
     <body>
 
         <div id="app">
+
             <hero-nav inline-template>
                 @include('layouts.nav')
             </hero-nav>
@@ -34,6 +35,9 @@
             <main class="container">
                 @yield('content')
             </main>
+
+            @include('layouts.footer')
+
         </div>
 
         <script src="{{ mix('js/manifest.js') }}"></script>
