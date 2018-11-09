@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Todo;
 use Illuminate\Http\Request;
+
+use App\Todo;
 use App\Board;
 
 class TodoController extends Controller
@@ -30,8 +31,6 @@ class TodoController extends Controller
         $todo->update([
             'completed' => request()->has('completed')
         ]);
-
-        return back();
     }
 
     /**

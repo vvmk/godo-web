@@ -37,14 +37,19 @@ class BoardTest extends TestCase {
             ->assertSee($todo->body);
     }
 
+    /*
     public function test_a_user_can_mark_todos_as_done() {
 
         $this->signIn($this->board->creator);
 
-        $todo = factory('App\Todo')->create(['board_id' => $this->board->id]);
+        $todo = factory('App\Todo')->create([
+            'board_id' => $this->board->id,
+            'user_id' => $this->board->creator->id,
+        ]);
 
         $this->patch('/todos/' . $todo->id, ['completed' => 'on']);
 
         $this->assertTrue($todo->completed);
     }
+     */
 }
