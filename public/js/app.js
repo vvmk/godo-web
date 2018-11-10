@@ -29,28 +29,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ["todo"],
+    props: ['raw'],
 
     computed: {
-        checked: function checked() {
-            return this.todo["completed"] || "";
+        todo: function todo() {
+            return JSON.parse(this.raw);
         },
-        controlName: function controlName() {
-            return "completed_" + this.todo["id"];
+        checked: function checked() {
+            return this.todo['completed'] || '';
+        },
+        name: function name() {
+            return 'completed_' + this.todo['id'];
+        },
+        description: function description() {
+            return this.todo['description'];
         }
     },
 
-    mounted: function mounted() {
-        console.log(this.todo);
-    },
-
-
     methods: {
-        toggleChecked: function toggleChecked(checked) {
-            console.log("checked: ", checked);
-            this.$emit("input", checked);
+        toggle: function toggle(checked) {
+            console.log('checked: ', checked);
+            this.$emit('input', checked);
         }
     }
 });
@@ -170,7 +172,28 @@ module.exports = function normalizeComponent (
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-263df564\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/TodoItem.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("label", { staticClass: "checkbox", attrs: { for: _vm.name } }, [
+      _c("input", {
+        attrs: { type: "checkbox", name: _vm.name },
+        domProps: { checked: _vm.checked },
+        on: {
+          change: function($event) {
+            _vm.toggle($event.target.value)
+          }
+        }
+      }),
+      _vm._v("\n            " + _vm._s(_vm.description) + "\n    ")
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

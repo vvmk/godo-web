@@ -17,9 +17,7 @@
             <div class="level-left">
                 <div class="level-item">
 
-                    <todo-item todo="{'id':1,'description':'description!','completed':true}">
-                        {{ $todo }}
-                    </todo-item>
+                    <todo-item raw="{{ $todo }}"></todo-item>
 
                 </div>
             </div>

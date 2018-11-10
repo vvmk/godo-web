@@ -1,34 +1,41 @@
 <template>
-    <label class="checkbox" :for="controlName">
-        <input {{ checked }} type="checkbox" :name="controlName" @change="toggleChecked">
-            {{ todo['description'] }}
-    </label>
-    <slot></slot>
+    <div>
+        <label class="checkbox" :for="name">
+            <input :checked="checked" type="checkbox" :name="name" @change="toggle($event.target.value)">
+                {{ description }}
+        </label>
+    </div>
 </template>
 
 <script>
 export default {
-    props: ["todo"],
+    props: [
+        'raw',
+    ],
 
     computed: {
-        checked() {
-            return this.todo["completed"] || "";
+        todo() {
+            return JSON.parse(this.raw);
         },
 
-        controlName() {
-            return "completed_" + this.todo["id"];
-        }
-    },
+        checked() {
+            return this.todo['completed'] || '';
+        },
 
-    mounted() {
-        console.log(this.todo);
+        name() {
+            return 'completed_' + this.todo['id'];
+        },
+
+        description() {
+            return this.todo['description'];
+        },
     },
 
     methods: {
-        toggleChecked(checked) {
-            console.log("checked: ", checked);
-            this.$emit("input", checked);
-        }
-    }
+        toggle(checked) {
+            console.log('checked: ', checked);
+            this.$emit('input', checked);
+        },
+    },
 };
 </script>
