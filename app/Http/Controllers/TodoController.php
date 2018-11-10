@@ -31,6 +31,8 @@ class TodoController extends Controller
         $todo->update([
             'completed' => request()->has('completed')
         ]);
+
+        return back();
     }
 
     /**

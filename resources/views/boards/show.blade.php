@@ -21,7 +21,7 @@
                         @method('PATCH')
                         @csrf
                         <label class="checkbox" for="completed">
-                            <input type="checkbox" name="completed">
+                            <input {{ $todo->completed ? 'checked' : '' }} type="checkbox" name="completed" onChange="this.form.submit()">
                             {{ $todo->description }}
                         </label>
                     </form>
