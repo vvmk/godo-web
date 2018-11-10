@@ -15,16 +15,11 @@
 
         <div class="level">
             <div class="level-left">
-
                 <div class="level-item">
-                    <form method="POST" action="/todos/{{ $todo->id }}">
-                        @method('PATCH')
-                        @csrf
-                        <label class="checkbox" for="completed">
-                            <input {{ $todo->completed ? 'checked' : '' }} type="checkbox" name="completed" onChange="this.form.submit()">
-                            {{ $todo->description }}
-                        </label>
-                    </form>
+
+                    <todo-item todo="{'id':1,'description':'description!','completed':true}">
+                        {{ $todo }}
+                    </todo-item>
 
                 </div>
             </div>

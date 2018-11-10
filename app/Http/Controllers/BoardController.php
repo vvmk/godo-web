@@ -59,9 +59,7 @@ class BoardController extends Controller
     {
         $board = Board::where('name', $name)->first();
 
-        $todos = $board->todos();
-
-        return view('boards.show', compact('board', 'todos'));
+        return view('boards.show', compact('board'));
     }
 
     /**
