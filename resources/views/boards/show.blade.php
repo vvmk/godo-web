@@ -14,6 +14,7 @@
         @foreach($board->todos as $todo)
 
         <div class="level">
+
             <div class="level-left">
                 <div class="level-item">
 
@@ -24,9 +25,12 @@
 
             <div class="level-right">
                 <div class="level-item">
-                    <a class="level-item" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a>&nbsp;added {{ $todo->created_at->diffForHumans() }}
+                    <a class="level-item" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a>
+                    &nbsp;added&nbsp;
+                    {{ $todo->created_at->diffForHumans() }}
                 </div>
             </div>
+
         </div>
 
         @endforeach
