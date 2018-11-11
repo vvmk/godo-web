@@ -26,13 +26,12 @@ class TodoController extends Controller
         return back();
     }
 
+    // TODO: return json & response code so I can handle errors out front
     public function update(Request $request, Todo $todo)
     {
         $todo->update([
-            'completed' => request()->has('completed')
+            'completed' => request()->completed,
         ]);
-
-        return back();
     }
 
     /**

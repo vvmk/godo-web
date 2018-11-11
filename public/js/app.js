@@ -32,15 +32,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['raw'],
+    props: ['raw', 'action'],
+
+    data: function data() {
+        return {
+            completed: false
+        };
+    },
+    mounted: function mounted() {
+        this.checked = !!this.todo.completed;
+    },
+
 
     computed: {
         todo: function todo() {
             return JSON.parse(this.raw);
         },
-        checked: function checked() {
-            return this.todo['completed'] || '';
+
+
+        checked: {
+            get: function get() {
+                return this.completed;
+            },
+            set: function set(newVal) {
+                this.completed = newVal;
+            }
         },
+
         name: function name() {
             return 'completed_' + this.todo['id'];
         },
@@ -51,8 +69,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         toggle: function toggle(checked) {
-            console.log('checked: ', checked);
-            this.$emit('input', checked);
+            axios.patch(this.action, { completed: this.completed });
         }
     }
 });
@@ -179,12 +196,43 @@ var render = function() {
   return _c("div", [
     _c("label", { staticClass: "checkbox", attrs: { for: _vm.name } }, [
       _c("input", {
-        attrs: { type: "checkbox", name: _vm.name },
-        domProps: { checked: _vm.checked },
-        on: {
-          change: function($event) {
-            _vm.toggle($event.target.value)
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.checked,
+            expression: "checked"
           }
+        ],
+        attrs: { type: "checkbox", name: _vm.name },
+        domProps: {
+          checked: Array.isArray(_vm.checked)
+            ? _vm._i(_vm.checked, null) > -1
+            : _vm.checked
+        },
+        on: {
+          change: [
+            function($event) {
+              var $$a = _vm.checked,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.checked = $$c
+              }
+            },
+            function($event) {
+              _vm.toggle($event.target.value)
+            }
+          ]
         }
       }),
       _vm._v("\n            " + _vm._s(_vm.description) + "\n    ")
@@ -234,6 +282,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         'hero-nav': __WEBPACK_IMPORTED_MODULE_2__components_HeroNav___default.a,
         'todo-item': __WEBPACK_IMPORTED_MODULE_3__components_TodoItem___default.a
     }
+
 });
 
 /***/ }),

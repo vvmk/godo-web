@@ -17,7 +17,7 @@
             <div class="level-left">
                 <div class="level-item">
 
-                    <todo-item raw="{{ $todo }}"></todo-item>
+                    <todo-item raw="{{ $todo }}" action="{{ $todo->path() }}"></todo-item>
 
                 </div>
             </div>

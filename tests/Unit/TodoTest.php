@@ -23,4 +23,10 @@ class TodoTest extends TestCase
     public function test_it_has_a_creator() {
         $this->assertInstanceOf('App\User', $this->todo->creator);
     }
+
+    public function test_returns_its_path() {
+        $expected = '/todos/' . $this->todo->id;
+
+        $this->assertEquals($expected, $this->todo->path());
+    }
 }
