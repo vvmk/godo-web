@@ -8,61 +8,62 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="field">
-
+                    <label class="label" for="email">Email</label>
                     <p class="control has-icons-left">
-                        <input class="input{{ $errors->has('email') ? ' is-danger' : '' }}" 
-                            id="email"
-                            type="email"
-                            name="email"
-                            value="{{ old('email') }}"
-                            placeholder="Email"
-                            required
-                            autofocus
-                        />
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
+                    <input class="input{{ $errors->has('email') ? ' is-danger' : '' }}" 
+                           id="email"
+                           type="email"
+                           name="email"
+                           value="{{ old('email') }}"
+                           placeholder="exempli@gratia.com"
+                           required
+                           autofocus
+                           />
+                           <span class="icon is-small is-left">
+                               <i class="fas fa-envelope"></i>
+                           </span>
 
-                        @if ($errors->has('email'))
-                        <span class="has-text-danger" role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                        @endif
+                           @if ($errors->has('email'))
+                           <span class="has-text-danger" role="alert">
+                               <strong>{{ $errors->first('email') }}</strong>
+                           </span>
+                           @endif
                     </p>
                 </div>
 
                 <div class="field">
+                    <label class="label" for="password">Password</label>
                     <p class="control has-icons-left">
-                        <input class="input{{ $errors->has('password') ? ' is-danger' : '' }}"
-                            id="password"
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            required
-                        />
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
+                    <input class="input{{ $errors->has('password') ? ' is-danger' : '' }}"
+                           id="password"
+                           type="password"
+                           placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+                           name="password"
+                           required
+                           />
+                           <span class="icon is-small is-left">
+                               <i class="fas fa-lock"></i>
+                           </span>
 
-                        @if ($errors->has('password'))
-                        <span class="has-text-danger" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                        @endif
+                           @if ($errors->has('password'))
+                           <span class="has-text-danger" role="alert">
+                               <strong>{{ $errors->first('password') }}</strong>
+                           </span>
+                           @endif
 
                     </p>
                 </div>
                 <div class="field">
                     <p class="control">
-                        <input class="checkbox"
-                            type="checkbox"
-                            name="remember"
-                            id="remember"
-                            {{ old('remember') ? 'checked' : '' }}
-                        />
-                        <label class="checkbox" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
+                    <input class="checkbox"
+                           type="checkbox"
+                           name="remember"
+                           id="remember"
+                           {{ old('remember') ? 'checked' : '' }}
+                           />
+                    <label class="checkbox" for="remember">
+                        {{ __('Remember Me') }}
+                    </label>
                     </p>
                 </div>
 
