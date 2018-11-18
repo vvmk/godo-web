@@ -21,6 +21,8 @@
             <button class="button is-link">Add Todo</button>
         </div>
     </div>
+
+    @include('errors')
 </form>
 
 @foreach($board->todos as $todo)
