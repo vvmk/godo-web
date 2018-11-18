@@ -26,8 +26,7 @@ class Board extends Model
     }
 
     public function addTodo($description) {
-        return Todo::create([
-            'board_id' => $this->id,
+        $this->todos()->create([
             'description' => $description,
             'user_id' => auth()->id(),
         ]);
