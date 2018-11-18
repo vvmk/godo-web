@@ -1,43 +1,55 @@
 @extends('layouts.master')
 @section('content')
-    <h3 class="subtitle is-3">All Boards</h3>
-    <div class="columns">
-        <div class="column is-3">
-            @foreach ($boards as $board)
+<div class="columns is-multiline">
 
-                <div style="margin-top: 1rem;" class="card">
+    <form class="column is-12" action="/boards" method="POST">
+        @csrf
 
-                    <div class="card-content">
+        <div class="box">
+            <div class="field">
+                <label class="label" for="name">New Board</label>
 
-                        <a class="is-link subtitle is-3 has-text-primary" href="{{ $board->path() }}">{{ $board->name }}</a>
-
-                    </div>
-
-                    <footer class="card-footer">
-
-                        <p class="card-footer-item">
-                            <span class="icon">
-                                <i class="far fa-star"></i>
-                            </span>
-                        </p>
-
-                        <p class="card-footer-item">
-                            <span class="icon">
-                                <i class="fas fa-list-ul"></i>&nbsp;<strong>{{ count($board->todos) }}</strong>
-                            </span>
-                        </p>
-
-                    </footer>
-
+                <div class="control">
+                    <input class="input" type="text" name="name" placeholder="New Board">
                 </div>
+            </div>
 
-            @endforeach
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link">Add Board</button>
+                </div>
+            </div>
         </div>
 
-        <div class="column is-8">
+    </form>
+
+    @foreach ($boards as $board)
+
+    <div class="column is-one-third">
+
+        <div class="box">
+
+            <div class="level">
+
+                <p class="level-left">
+                    <a class="item is-link subtitle is-3 has-text-primary" href="{{ $board->path() }}">{{ $board->name }}</a>
+                </p>
+
+                <p class="level-right">
+                    <span class="level-item icon">
+                        <i class="far fa-star"></i>
+                    </span>
+
+                    <span class="level-item icon">
+                        <i class="fas fa-list-ul"></i>&nbsp;<strong>{{ count($board->todos) }}</strong>
+                    </span>
+                </p>
+
+            </div>
 
         </div>
-
     </div>
+    @endforeach
 </div>
+
 @endsection
