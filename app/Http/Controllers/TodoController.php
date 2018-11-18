@@ -20,6 +20,7 @@ class TodoController extends Controller
     {
         $board->addTodo([
             'description' => request('description'),
+            'board_id' => $board->id,
             'user_id' => auth()->id(),
         ]);
 

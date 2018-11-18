@@ -8,7 +8,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/boards', 'BoardController@index');
 Route::get('/boards/{name}', 'BoardController@show');
-Route::post('/boards/{name}/todos', 'TodoController@create');
+
+Route::post('/boards/{board}/todos', 'TodoController@store');
 
 Route::get('/users/{id}', 'HomeController@show')->name('profile');
 
