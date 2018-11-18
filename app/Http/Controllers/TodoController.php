@@ -27,9 +27,10 @@ class TodoController extends Controller
 
     public function update(Request $request, Todo $todo)
     {
-        $todo->update([
-            'completed' => request()->completed,
-        ]);
+        $method = request()->completed ? 'complete' : 'incomplete';
+
+        // wooooooahhhhhh
+        $todo->$method();
     }
 
     /**
