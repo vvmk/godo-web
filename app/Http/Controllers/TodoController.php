@@ -18,6 +18,10 @@ class TodoController extends Controller
 
     public function store(Board $board)
     {
+        $attributes = request()->validate(['description' => 'required']);
+
+        // TODO: this is what I want, it breaks though. investigate later.
+        //$board->addTodo($attributes);
         $board->addTodo(request('description'));
 
         return back();
