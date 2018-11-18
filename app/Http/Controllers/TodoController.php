@@ -18,11 +18,7 @@ class TodoController extends Controller
 
     public function store(Board $board)
     {
-        $board->addTodo([
-            'description' => request('description'),
-            'board_id' => $board->id,
-            'user_id' => auth()->id(),
-        ]);
+        $board->addTodo(request('description'));
 
         return back();
     }

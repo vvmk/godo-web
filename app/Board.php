@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use \App\User;
-use \App\Todo;
+use App\User;
+use App\Todo;
 
 class Board extends Model
 {
@@ -25,7 +25,11 @@ class Board extends Model
         return $this->hasMany(Todo::class);
     }
 
-    public function addTodo($todo) {
-        $this->todos()->create($todo);
+    public function addTodo($description) {
+        return Todo::create([
+            'board_id' => $this->id,
+            'description' => $description,
+            'user_id' => auth()->id(),
+        ]);
     }
 }
