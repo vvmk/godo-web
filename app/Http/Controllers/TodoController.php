@@ -20,14 +20,11 @@ class TodoController extends Controller
     {
         $attributes = request()->validate(['description' => 'required']);
 
-        // TODO: this is what I want, it breaks though. investigate later.
-        //$board->addTodo($attributes);
-        $board->addTodo(request('description'));
+        $board->addTodo($attributes);
 
         return back();
     }
 
-    // TODO: return json & response code so I can handle errors out front
     public function update(Request $request, Todo $todo)
     {
         $todo->update([
