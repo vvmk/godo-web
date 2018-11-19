@@ -10,7 +10,7 @@
         @csrf
 
         <div class="field">
-            <label class="label" for="description">New Todo</label>
+            <label v-show="false" class="label" for="description">&nbsp;</label>
 
             <div class="control">
                 <input class="input" type="text" name="description" placeholder="New Todo">
