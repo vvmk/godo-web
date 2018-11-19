@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth', ['only' => ['store', 'update', 'destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,16 +22,6 @@ class BoardController extends Controller
         $boards = Board::latest()->get();
 
         return view('boards.index', compact('boards'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -46,7 +41,7 @@ class BoardController extends Controller
             'name' => $request->name,
         ]);
 
-        // TODO: return appropriate response for CLI consumption.
+        return back();
     }
 
     /**
@@ -60,17 +55,6 @@ class BoardController extends Controller
         $board = Board::where('name', $name)->first();
 
         return view('boards.show', compact('board'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Board  $board
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Board $board)
-    {
-        //
     }
 
     /**

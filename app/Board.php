@@ -10,7 +10,8 @@ use App\Todo;
 class Board extends Model
 {
     protected $fillable = [
-        "name",
+        'name',
+        'user_id',
     ];
 
     public function path() {

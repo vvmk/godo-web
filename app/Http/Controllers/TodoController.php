@@ -13,7 +13,7 @@ class TodoController extends Controller
     public function __construct() {
         /* $this->middleware('auth'); */
         // Above line will protect them all, I just don't want to forget how to do this again.
-        $this->middleware('auth', ['only' => ['store', 'update', 'destroy']]);;
+        $this->middleware('auth', ['only' => ['store', 'update', 'destroy']]);
     }
 
     public function store(Board $board)
