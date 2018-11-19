@@ -276,7 +276,10 @@ window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
 
-    data: {},
+    data: {
+        showTimestamp: false,
+        showBlame: false
+    },
 
     components: {
         'hero-nav': __WEBPACK_IMPORTED_MODULE_2__components_HeroNav___default.a,

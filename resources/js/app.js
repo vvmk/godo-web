@@ -11,6 +11,8 @@ new Vue({
     el: '#app',
 
     data: {
+        showTimestamp: false,
+        showBlame: false,
     },
 
     components: {
