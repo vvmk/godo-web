@@ -41,7 +41,8 @@ class BoardController extends Controller
             'name' => $request->name,
         ]);
 
-        return back();
+        // TODO: this feels right, but it tastes like a dirty penny
+        return view('boards.show', compact('board'));
     }
 
     /**
