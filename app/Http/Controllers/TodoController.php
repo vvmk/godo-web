@@ -22,7 +22,7 @@ class TodoController extends Controller
 
         $board->addTodo($attributes);
 
-        return back();
+        return view('boards.show', compact('board'));
     }
 
     public function update(Request $request, Todo $todo)
