@@ -7,6 +7,12 @@ import TodoItem from './components/TodoItem';
 window.Vue =  Vue;
 window.axios = axios;
 
+Vue.directive('autofocus', {
+    inserted: (el) => {
+        el.focus();
+    },
+});
+
 new Vue({
     el: '#app',
 

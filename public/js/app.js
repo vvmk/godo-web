@@ -273,6 +273,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('autofocus', {
+    inserted: function inserted(el) {
+        el.focus();
+    }
+});
+
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
 
