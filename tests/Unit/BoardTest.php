@@ -23,10 +23,11 @@ class BoardTest extends TestCase
     }
 
     public function test_it_can_add_a_todo() {
+        $user = factory('App\User')->create();
+        $this->signIn($user);
 
         $this->board->addTodo([
             'description' => 'Time is an illusion',
-            'user_id' => 1,
         ]);
 
         $this->assertCount(1, $this->board->todos);

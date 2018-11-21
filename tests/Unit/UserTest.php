@@ -28,10 +28,6 @@ class UserTest extends TestCase
         $response->assertSee($this->user->name); 
     }
 
-    /*
-     * Things I need to know to write this unit test:
-     *      
-     */
     public function test_user_can_set_autofocus_prefs() {
         // sign in user
         $this->signIn($this->user);
