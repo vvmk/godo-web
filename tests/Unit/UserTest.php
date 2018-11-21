@@ -27,4 +27,22 @@ class UserTest extends TestCase
 
         $response->assertSee($this->user->name); 
     }
+
+    /*
+     * Things I need to know to write this unit test:
+     *      
+     */
+    public function test_user_can_set_autofocus_prefs() {
+        // sign in user
+        $this->signIn($this->user);
+
+        // test the default setting (true for this specific pref)
+        $this->assertTrue($this->user->prefs('autofocus'));
+
+        // make a [tbd] request to prefs endpoint to toggle it (off)
+        $this->patch($this->user->path() . '/prefs', ['autofocus' => false]);
+
+        //assert the pref has been set ($user->prefs('autofocus') == false)
+        $this->assertFalse($this->user->prefs('autofocus'));
+    }
 }
