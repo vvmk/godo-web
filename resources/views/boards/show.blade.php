@@ -13,7 +13,7 @@
             <label v-show="false" class="label" for="description">&nbsp;</label>
 
             <div class="control">
-                <input class="input" type="text" name="description" placeholder="New Todo" autofocus v-autofocus />
+                <input class="input" type="text" name="description" placeholder="New Todo" autofocus v-autofocus="{{ true }}" />
             </div>
         </div>
 

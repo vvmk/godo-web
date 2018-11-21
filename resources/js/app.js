@@ -8,8 +8,8 @@ window.Vue =  Vue;
 window.axios = axios;
 
 Vue.directive('autofocus', {
-    inserted: (el) => {
-        el.focus();
+    inserted: (el, shouldAutofocus) => {
+        if (shouldAutofocus) el.focus();
     },
 });
 

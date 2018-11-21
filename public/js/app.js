@@ -274,8 +274,8 @@ window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('autofocus', {
-    inserted: function inserted(el) {
-        el.focus();
+    inserted: function inserted(el, shouldAutofocus) {
+        if (shouldAutofocus) el.focus();
     }
 });
 
