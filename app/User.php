@@ -13,6 +13,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $casts =[
+        'prefs' => 'array',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,5 +45,9 @@ class User extends Authenticatable
 
     public function todos() {
         return $this->hasMany(Todo::class);
+    }
+
+    public function pref($name) {
+        return $this->prefs[$name];
     }
 }

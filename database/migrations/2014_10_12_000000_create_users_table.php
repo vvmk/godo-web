@@ -17,6 +17,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->json('prefs')->default(json_encode([
+                'autofocus' => true,
+            ]));
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
