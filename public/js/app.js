@@ -284,14 +284,30 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
     data: {
         showTimestamp: false,
-        showBlame: false
+        showBlame: false,
+        todoField: ''
     },
 
     components: {
         'hero-nav': __WEBPACK_IMPORTED_MODULE_2__components_HeroNav___default.a,
         'todo-item': __WEBPACK_IMPORTED_MODULE_3__components_TodoItem___default.a
-    }
+    },
 
+    methods: {
+        postTodo: function postTodo(board) {
+            var _this = this;
+
+            if (this.todoField) {
+                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/boards/' + board + '/todos', { description: this.todoField }).then(function (response) {
+                    _this.todos.push(response);
+
+                    _this.todoField = '';
+                }).catch(function (error) {
+                    return console.log(error);
+                });
+            }
+        }
+    }
 });
 
 /***/ }),
