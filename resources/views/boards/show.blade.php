@@ -6,14 +6,14 @@
 </h3>
 
 <div class="box">
-    <form @submit.prevent="postTodo({{ $board->id }})">
+    <form method="POST" action="/boards/{{ $board->id }}/todos">
         @csrf
 
         <div class="field">
             <label v-show="false" class="label" for="description">&nbsp;</label>
 
             <div class="control">
-                <input v-model="todoField" class="input" type="text" name="description" placeholder="New Todo" autofocus v-autofocus="{{ true }}" />
+                <input class="input" type="text" name="description" placeholder="New Todo" autofocus v-autofocus="{{ true }}" />
             </div>
         </div>
 

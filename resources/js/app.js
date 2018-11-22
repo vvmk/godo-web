@@ -20,6 +20,7 @@ new Vue({
         showTimestamp: false,
         showBlame: false,
         todoField: '',
+        todos: [],
     },
 
     components: {

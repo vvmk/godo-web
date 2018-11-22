@@ -285,7 +285,8 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     data: {
         showTimestamp: false,
         showBlame: false,
-        todoField: ''
+        todoField: '',
+        todos: []
     },
 
     components: {
