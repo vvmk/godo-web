@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import axios from 'axios';
+
+import BoardShow from './views/BoardShow';
+
 import HeroNav from './components/HeroNav';
-import BoardShow from './components/BoardShow';
 
 
 window.Vue =  Vue;

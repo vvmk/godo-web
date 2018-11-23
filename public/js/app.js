@@ -1,58 +1,5 @@
 webpackJsonp([1],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/BoardShow.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TodoItem__ = __webpack_require__("./resources/js/components/TodoItem.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TodoItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__TodoItem__);
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['InitTodos'],
-
-    data: function data() {
-        return {
-            showTimestamp: false,
-            showBlame: false,
-            todoField: '',
-            todos: []
-        };
-    },
-    mounted: function mounted() {
-        var _todos;
-
-        (_todos = this.todos).push.apply(_todos, _toConsumableArray(this.InitTodos));
-    },
-
-
-    methods: {
-        postTodo: function postTodo(board) {
-            var _this = this;
-
-            if (this.todoField) {
-                axios.post('/boards/' + board + '/todos', { description: this.todoField }).then(function (response) {
-                    _this.todos.push(response);
-
-                    _this.todoField = '';
-                }).catch(function (error) {
-                    return console.log(error);
-                });
-            }
-        }
-    },
-
-    components: {
-        'todo-item': __WEBPACK_IMPORTED_MODULE_0__TodoItem___default.a
-    }
-
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/HeroNav.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -125,6 +72,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.patch(this.action, { completed: this.completed });
         }
     }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/views/BoardShow.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TodoItem__ = __webpack_require__("./resources/js/components/TodoItem.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TodoItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_TodoItem__);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['InitTodos'],
+
+    data: function data() {
+        return {
+            showTimestamp: false,
+            showBlame: false,
+            todoField: '',
+            todos: []
+        };
+    },
+    mounted: function mounted() {
+        var _todos;
+
+        (_todos = this.todos).push.apply(_todos, _toConsumableArray(this.InitTodos));
+    },
+
+
+    methods: {
+        postTodo: function postTodo(board) {
+            var _this = this;
+
+            if (this.todoField) {
+                axios.post('/boards/' + board + '/todos', { description: this.todoField }).then(function (response) {
+                    _this.todos.push(response);
+
+                    _this.todoField = '';
+                }).catch(function (error) {
+                    return console.log(error);
+                });
+            }
+        }
+    },
+
+    components: {
+        'todo-item': __WEBPACK_IMPORTED_MODULE_0__components_TodoItem___default.a
+    }
+
 });
 
 /***/ }),
@@ -313,10 +313,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__("./node_modules/axios/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HeroNav__ = __webpack_require__("./resources/js/components/HeroNav.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HeroNav___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_HeroNav__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_BoardShow__ = __webpack_require__("./resources/js/components/BoardShow.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_BoardShow___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_BoardShow__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_BoardShow__ = __webpack_require__("./resources/js/views/BoardShow.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_BoardShow___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_BoardShow__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_HeroNav__ = __webpack_require__("./resources/js/components/HeroNav.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_HeroNav___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_HeroNav__);
+
+
 
 
 
@@ -335,58 +337,10 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
 
     components: {
-        'board-show': __WEBPACK_IMPORTED_MODULE_3__components_BoardShow___default.a,
-        'hero-nav': __WEBPACK_IMPORTED_MODULE_2__components_HeroNav___default.a
+        'board-show': __WEBPACK_IMPORTED_MODULE_2__views_BoardShow___default.a,
+        'hero-nav': __WEBPACK_IMPORTED_MODULE_3__components_HeroNav___default.a
     }
 });
-
-/***/ }),
-
-/***/ "./resources/js/components/BoardShow.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
-/* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/BoardShow.vue")
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/BoardShow.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-40ac68b0", Component.options)
-  } else {
-    hotAPI.reload("data-v-40ac68b0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ }),
 
@@ -475,6 +429,54 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-263df564", Component.options)
   } else {
     hotAPI.reload("data-v-263df564", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/js/views/BoardShow.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/views/BoardShow.vue")
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/BoardShow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-68429918", Component.options)
+  } else {
+    hotAPI.reload("data-v-68429918", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
