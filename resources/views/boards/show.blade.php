@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('content')
 
+<board-show inline-template
+            :init-todos="{{ $board->todos }}">
+<div>
+
 <h3 class="subtitle is-3">
     {{ $board->name }} by <a href="{{ $board->creator->path() }}">{{ $board->creator->name }}</a>
 </h3>
@@ -75,4 +79,7 @@
         @endforeach
     </div>
 </div>
+
+</div>
+</board-show>
 @endsection

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import axios from 'axios';
 import HeroNav from './components/HeroNav';
+import BoardShow from './components/BoardShow';
 
-import TodoItem from './components/TodoItem';
 
 window.Vue =  Vue;
 window.axios = axios;
@@ -16,30 +16,9 @@ Vue.directive('autofocus', {
 new Vue({
     el: '#app',
 
-    data: {
-        showTimestamp: false,
-        showBlame: false,
-        todoField: '',
-        todos: [],
-    },
-
     components: {
+        'board-show': BoardShow,
         'hero-nav': HeroNav,
-        'todo-item': TodoItem,
-    },
-
-    methods: {
-        postTodo(board) {
-            if (this.todoField) {
-                axios.post(`/boards/${board}/todos`, { description: this.todoField })
-                    .then(response => {
-                        this.todos.push(response);
-
-                        this.todoField = '';
-                    })
-                    .catch(error => console.log(error));
-            }
-        }
     },
 });
 
