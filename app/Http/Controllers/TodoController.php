@@ -20,9 +20,7 @@ class TodoController extends Controller
     {
         $attributes = request()->validate(['description' => 'required']);
 
-        $board->addTodo($attributes);
-
-        return view('boards.show', compact('board'));
+        return $board->addTodo($attributes);
     }
 
     public function update(Request $request, Todo $todo)

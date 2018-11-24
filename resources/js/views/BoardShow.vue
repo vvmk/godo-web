@@ -20,12 +20,11 @@ export default {
     },
 
     methods: {
-        postTodo(board) {
+        postTodo(action) {
             if (this.todoField) {
-                axios.post(`/boards/${board}/todos`, { description: this.todoField })
+                axios.post(action, { description: this.todoField })
                     .then(response => {
-                        this.todos.push(response);
-
+                        this.todos.push(response.data);
                         this.todoField = '';
                     })
                     .catch(error => console.log(error));

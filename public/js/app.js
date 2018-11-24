@@ -101,13 +101,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
     methods: {
-        postTodo: function postTodo(board) {
+        postTodo: function postTodo(action) {
             var _this = this;
 
             if (this.todoField) {
-                axios.post('/boards/' + board + '/todos', { description: this.todoField }).then(function (response) {
-                    _this.todos.push(response);
-
+                axios.post(action, { description: this.todoField }).then(function (response) {
+                    _this.todos.push(response.data);
                     _this.todoField = '';
                 }).catch(function (error) {
                     return console.log(error);

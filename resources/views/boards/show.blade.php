@@ -10,20 +10,19 @@
 </h3>
 
 <div class="box">
-    <form method="POST" action="/boards/{{ $board->id }}/todos">
-        @csrf
+    <form @@submit.prevent="postTodo('/boards/{{ $board->id }}/todos')">
 
         <div class="field">
             <label v-show="false" class="label" for="description">&nbsp;</label>
 
             <div class="control">
-                <input class="input" type="text" name="description" placeholder="New Todo" autofocus v-autofocus="{{ true }}" />
+                <input class="input" type="text" name="description" placeholder="New Todo" v-model="todoField" autofocus v-autofocus="{{ true }}" />
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <button class="button is-link">Add Todo</button>
+                <button :disabled="!this.todoField" class="button is-link">Add Todo</button>
             </div>
         </div>
 
