@@ -32,7 +32,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['raw', 'action'],
+    props: ['todo', 'action'],
 
     data: function data() {
         return {
@@ -45,11 +45,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     computed: {
-        todo: function todo() {
-            return JSON.parse(this.raw);
-        },
-
-
         checked: {
             get: function get() {
                 return this.completed;
@@ -60,10 +55,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         name: function name() {
-            return 'completed_' + this.todo['id'];
+            return 'completed_' + this.todo.id;
         },
         description: function description() {
-            return this.todo['description'];
+            return this.todo.description;
         }
     },
 

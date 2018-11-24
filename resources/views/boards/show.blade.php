@@ -54,29 +54,26 @@
             </div>
         </div>
 
-        @foreach($board->todos as $todo)
-
-        <div class="level">
+        <div v-for="todo in todos" class="level">
 
             <div class="level-left">
                 <div class="level-item">
 
-                    <todo-item raw="{{ $todo }}" action="{{ $todo->path() }}"></todo-item>
+                    <todo-item :todo="todo" :action="'/todos/' + todo.id"></todo-item>
 
                 </div>
             </div>
 
             <div class="level-right">
                 <div v-if="showBlame || showTimestamp" class="level-item is-size-7">
-                    <a v-if="showBlame" href="{{ $todo->creator->path() }}">{{ $todo->creator->name }}</a>
+                    <a v-if="showBlame" :href="'/users/' + todo.user_id" v-text="todo.user_id"></a>
                     <span v-if="showBlame && showTimestamp">&nbsp;added&nbsp;</span>
-                    <span v-if="showTimestamp">{{ $todo->created_at->diffForHumans() }}<span>
+                    <span v-if="showTimestamp" v-text="todo.created_at"><span>
                 </div>
             </div>
 
         </div>
 
-        @endforeach
     </div>
 </div>
 

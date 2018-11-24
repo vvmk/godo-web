@@ -10,7 +10,7 @@
 <script>
 export default {
     props: [
-        'raw',
+        'todo',
         'action',
     ],
 
@@ -25,10 +25,6 @@ export default {
     },
 
     computed: {
-        todo() {
-            return JSON.parse(this.raw);
-        },
-
         checked: {
             get() {
                 return this.completed;
@@ -40,11 +36,11 @@ export default {
         },
 
         name() {
-            return 'completed_' + this.todo['id'];
+            return 'completed_' + this.todo.id;
         },
 
         description() {
-            return this.todo['description'];
+            return this.todo.description;
         },
     },
 
