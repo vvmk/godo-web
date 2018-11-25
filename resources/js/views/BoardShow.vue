@@ -30,6 +30,14 @@ export default {
                     .catch(error => console.log(error));
             }
         },
+
+        controlW() {
+            this.todoField = deleteLastWord(this.todoField);
+        },
+
+        controlU() {
+            this.todoField = '';
+        },
     },
 
     components: {

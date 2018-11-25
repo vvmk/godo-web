@@ -112,6 +112,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                     return console.log(error);
                 });
             }
+        },
+        controlW: function controlW() {
+            this.todoField = deleteLastWord(this.todoField);
+        },
+        controlU: function controlU() {
+            this.todoField = '';
         }
     },
 
@@ -321,6 +327,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
+window.deleteLastWord = function (text) {
+    var newText = text.split(' ').slice(0, -1).join(' ');
+    return newText ? newText + ' ' : '';
+};
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('autofocus', {
     inserted: function inserted(el, shouldAutofocus) {
         if (shouldAutofocus) el.focus();
@@ -334,6 +345,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         'board-show': __WEBPACK_IMPORTED_MODULE_2__views_BoardShow___default.a,
         'hero-nav': __WEBPACK_IMPORTED_MODULE_3__components_HeroNav___default.a
     }
+
 });
 
 /***/ }),
