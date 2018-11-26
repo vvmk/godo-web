@@ -10,8 +10,12 @@ window.Vue =  Vue;
 window.axios = axios;
 
 window.deleteLastWord = (text) => {
-    let newText = text.split(' ').slice(0, -1).join(' ');
-    return (newText) ? newText + ' ' : '';
+    const words = text.split(' ');
+    const end = words[words.length - 1] ? -1 : -2;
+
+    const newText = words.slice(0, end).join(' ');
+
+    return newText ? newText + ' ' : '';
 };
 
 Vue.directive('autofocus', {

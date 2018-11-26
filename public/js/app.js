@@ -328,7 +328,11 @@ window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
 window.deleteLastWord = function (text) {
-    var newText = text.split(' ').slice(0, -1).join(' ');
+    var words = text.split(' ');
+    var end = words[words.length - 1] ? -1 : -2;
+
+    var newText = words.slice(0, end).join(' ');
+
     return newText ? newText + ' ' : '';
 };
 
