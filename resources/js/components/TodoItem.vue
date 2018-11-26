@@ -9,7 +9,7 @@
 
         <label class="checkbox" :for="name">
             <input v-model="checked" type="checkbox" :id="name" @change="toggle($event.target.value)">
-            {{ description }}
+            <span :class="{'strike': completed}">{{ description }}</span>
         </label>
     </div>
 </template>

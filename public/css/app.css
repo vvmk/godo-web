@@ -12145,3 +12145,7 @@ body {
   padding-top: 60px;
 }
 
+.strike {
+  text-decoration: line-through !important;
+}
+

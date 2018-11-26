@@ -326,7 +326,10 @@ var render = function() {
           ]
         }
       }),
-      _vm._v("\n        " + _vm._s(_vm.description) + "\n    ")
+      _vm._v(" "),
+      _c("span", { class: { strike: _vm.completed } }, [
+        _vm._v(_vm._s(_vm.description))
+      ])
     ])
   ])
 }
