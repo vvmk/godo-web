@@ -257,7 +257,7 @@ var render = function() {
             expression: "checked"
           }
         ],
-        attrs: { type: "checkbox", name: _vm.name },
+        attrs: { type: "checkbox", id: _vm.name },
         domProps: {
           checked: Array.isArray(_vm.checked)
             ? _vm._i(_vm.checked, null) > -1

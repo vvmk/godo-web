@@ -1,7 +1,7 @@
 <template>
     <div>
         <label class="checkbox" :for="name">
-            <input v-model="checked" type="checkbox" :name="name" @change="toggle($event.target.value)">
+            <input v-model="checked" type="checkbox" :id="name" @change="toggle($event.target.value)">
                 {{ description }}
         </label>
     </div>
