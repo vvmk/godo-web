@@ -2,7 +2,7 @@
 @section('content')
 
 <board-show inline-template
-            :init-todos="{{ $board->todos }}" >
+            :init-todos="{{ $board->todos }}">
 
             <div>
 
@@ -43,6 +43,10 @@
                         <div class="level">
 
                             <div class="level-left">
+                                    <button :class="{'button': true, 'icon': true, 'is-danger': deleting}"
+                                                @@click="deleting = !deleting">
+                                                <i class="fas fa-trash-alt"></i>
+                                    </button>
                             </div>
 
                             <div class="level-right">
@@ -69,6 +73,7 @@
 
                                     <todo-item :todo="todo" 
                                                 :action="'/todos/' + todo.id"
+                                                :deleting="deleting"
                                                 @@todo-deleted="removeFromList">
                                     </todo-item>
 

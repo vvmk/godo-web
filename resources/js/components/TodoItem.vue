@@ -1,7 +1,8 @@
 <template>
     <div>
         <button class="button is-text has-text-danger icon"
-            @click="deleteTodo">
+                v-if="deleting"
+                @click="deleteTodo">
 
             <i class="fas fa-trash-alt"></i>
         </button>
@@ -18,6 +19,7 @@ export default {
     props: [
         'todo',
         'action',
+        'deleting',
     ],
 
     data() {

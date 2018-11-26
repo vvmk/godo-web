@@ -36,9 +36,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['todo', 'action'],
+    props: ['todo', 'action', 'deleting'],
 
     data: function data() {
         return {
@@ -106,6 +107,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         return {
             showTimestamp: false,
             showBlame: false,
+            deleting: false,
             todoField: '',
             todos: []
         };
@@ -272,14 +274,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "button is-text has-text-danger icon",
-        on: { click: _vm.deleteTodo }
-      },
-      [_c("i", { staticClass: "fas fa-trash-alt" })]
-    ),
+    _vm.deleting
+      ? _c(
+          "button",
+          {
+            staticClass: "button is-text has-text-danger icon",
+            on: { click: _vm.deleteTodo }
+          },
+          [_c("i", { staticClass: "fas fa-trash-alt" })]
+        )
+      : _vm._e(),
     _vm._v(" "),
     _c("label", { staticClass: "checkbox", attrs: { for: _vm.name } }, [
       _c("input", {
