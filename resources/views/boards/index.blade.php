@@ -10,7 +10,12 @@
                 <label class="label" for="name">New Board</label>
 
                 <div class="control">
-                    <input class="input" type="text" name="name" placeholder="New Board">
+                    <input class="input"
+                    type="text"
+                    name="name"
+                    placeholder="New Board"
+                    @@keydown.ctrl.87="$event.target.value = $event.target.value.split(' ').slice(0, -1).join(' ') + ' '"
+                    @@keydown.ctrl.85="$event.target.value = ''">
                 </div>
             </div>
 
