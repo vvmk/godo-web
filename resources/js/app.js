@@ -10,10 +10,8 @@ window.Vue =  Vue;
 window.axios = axios;
 
 window.deleteLastWord = (text) => {
-    const words = text.split(' ');
-    const end = words[words.length - 1] ? -1 : -2;
-
-    const newText = words.slice(0, end).join(' ');
+    const words = text.replace(/\s+$/, '').split(' ');
+    const newText = words.slice(0, -1).join(' ');
 
     return newText ? newText + ' ' : '';
 };
