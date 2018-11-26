@@ -31,6 +31,15 @@ export default {
             }
         },
 
+        removeFromList(id) {
+            // better to loop here only when deleting than building a map on mounted.
+            for (let i = 0; i < this.todos.length; i++) {
+                if (this.todos[i].id == id) {
+                    return this.todos.splice(i, 1);
+                }
+            }
+        },
+
         controlW() {
             this.todoField = deleteLastWord(this.todoField);
         },

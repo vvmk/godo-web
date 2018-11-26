@@ -3,6 +3,7 @@
 
 <board-show inline-template
             :init-todos="{{ $board->todos }}" >
+
             <div>
 
                 <h3 class="subtitle is-3">
@@ -66,7 +67,10 @@
                             <div class="level-left">
                                 <div class="level-item">
 
-                                    <todo-item :todo="todo" :action="'/todos/' + todo.id"></todo-item>
+                                    <todo-item :todo="todo" 
+                                                :action="'/todos/' + todo.id"
+                                                @@todo-deleted="removeFromList">
+                                    </todo-item>
 
                                 </div>
                             </div>

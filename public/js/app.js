@@ -30,6 +30,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['todo', 'action'],
@@ -65,6 +71,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         toggle: function toggle(checked) {
             axios.patch(this.action, { completed: this.completed });
+        },
+        deleteTodo: function deleteTodo() {
+            var _this = this;
+
+            axios.delete(this.action).then(function (response) {
+                var id = response.data;
+
+                _this.$emit('todo-deleted', id);
+            }).catch(function (error) {
+                return console.log(error);
+            });
         }
     }
 });
@@ -111,6 +128,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                 }).catch(function (error) {
                     return console.log(error);
                 });
+            }
+        },
+        removeFromList: function removeFromList(id) {
+            // better to loop here only when deleting than building a map on mounted.
+            for (var i = 0; i < this.todos.length; i++) {
+                if (this.todos[i].id == id) {
+                    return this.todos.splice(i, 1);
+                }
             }
         },
         controlW: function controlW() {
@@ -247,6 +272,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "button is-text has-text-danger icon",
+        on: { click: _vm.deleteTodo }
+      },
+      [_c("i", { staticClass: "fas fa-trash-alt" })]
+    ),
+    _vm._v(" "),
     _c("label", { staticClass: "checkbox", attrs: { for: _vm.name } }, [
       _c("input", {
         directives: [
@@ -288,7 +322,7 @@ var render = function() {
           ]
         }
       }),
-      _vm._v("\n            " + _vm._s(_vm.description) + "\n    ")
+      _vm._v("\n        " + _vm._s(_vm.description) + "\n    ")
     ])
   ])
 }

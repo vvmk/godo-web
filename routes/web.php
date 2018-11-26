@@ -14,5 +14,6 @@ Route::get('/boards/{name}', 'BoardController@show');
 
 Route::post('/boards/{board}/todos', 'TodoController@store');
 Route::patch('/todos/{todo}', 'TodoController@update');
+Route::delete('/todos/{todo}', 'TodoController@destroy');
 
 

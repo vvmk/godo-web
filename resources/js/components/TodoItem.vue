@@ -1,8 +1,14 @@
 <template>
     <div>
+        <button class="button is-text has-text-danger icon"
+            @click="deleteTodo">
+
+            <i class="fas fa-trash-alt"></i>
+        </button>
+
         <label class="checkbox" :for="name">
             <input v-model="checked" type="checkbox" :id="name" @change="toggle($event.target.value)">
-                {{ description }}
+            {{ description }}
         </label>
     </div>
 </template>
@@ -47,6 +53,16 @@ export default {
     methods: {
         toggle(checked) {
             axios.patch(this.action, { completed: this.completed });
+        },
+
+        deleteTodo() {
+            axios.delete(this.action)
+                .then(response => {
+                    let id = response.data;
+
+                    this.$emit('todo-deleted', id);
+                })
+                .catch(error => console.log(error));
         },
     },
 };
