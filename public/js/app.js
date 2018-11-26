@@ -37,9 +37,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['todo', 'action', 'deleting'],
+    props: ['todo', 'action', 'editing'],
 
     data: function data() {
         return {
@@ -72,6 +78,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         toggle: function toggle(checked) {
             axios.patch(this.action, { completed: this.completed });
+        },
+        editTodo: function editTodo() {
+            console.log('editing', this.todo.id);
         },
         deleteTodo: function deleteTodo() {
             var _this = this;
@@ -107,7 +116,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         return {
             showTimestamp: false,
             showBlame: false,
-            deleting: false,
+            editing: false,
             todoField: '',
             todos: []
         };
@@ -274,14 +283,25 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.deleting
+    _vm.editing
       ? _c(
           "button",
           {
-            staticClass: "button is-text has-text-danger icon",
+            staticClass: "button has-text-danger icon",
             on: { click: _vm.deleteTodo }
           },
           [_c("i", { staticClass: "fas fa-trash-alt" })]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editing
+      ? _c(
+          "button",
+          {
+            staticClass: "button has-text-link icon",
+            on: { click: _vm.editTodo }
+          },
+          [_c("i", { staticClass: "fas fa-edit" })]
         )
       : _vm._e(),
     _vm._v(" "),

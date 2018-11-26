@@ -10,7 +10,7 @@ export default {
         return {
             showTimestamp: false,
             showBlame: false,
-            deleting: false,
+            editing: false,
             todoField: '',
             todos: [],
         };

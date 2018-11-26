@@ -43,22 +43,22 @@
                         <div class="level">
 
                             <div class="level-left">
-                                    <button :class="{'button': true, 'icon': true, 'is-danger': deleting}"
-                                                @@click="deleting = !deleting">
-                                                <i class="fas fa-trash-alt"></i>
+                                    <button :class="{'button': true, 'is-medium': true, 'icon': true, 'is-warning': editing}"
+                                                @@click="editing = !editing">
+                                                <i class="fas fa-broom"></i>
                                     </button>
                             </div>
 
                             <div class="level-right">
                                 <div class="level-item">
-                                    <button :class="{'button': true, 'icon': true, 'is-link': showBlame}"
+                                    <button :class="{'button': true, 'is-medium': true, 'icon': true, 'is-link': showBlame}"
                                      @click="showBlame = !showBlame">
                                         <i class="fas fa-user"></i>
                                     </button>
                                 </div>
 
                                 <div class="level-item">
-                                    <button :class="{'button': true, 'icon': true, 'is-link': showTimestamp}"
+                                    <button :class="{'button': true, 'is-medium': true, 'icon': true, 'is-link': showTimestamp}"
                                      @click="showTimestamp = !showTimestamp">
                                         <i class="fas fa-clock"></i>
                                     </button>
@@ -73,7 +73,7 @@
 
                                     <todo-item :todo="todo" 
                                                 :action="'/todos/' + todo.id"
-                                                :deleting="deleting"
+                                                :editing="editing"
                                                 @@todo-deleted="removeFromList">
                                     </todo-item>
 

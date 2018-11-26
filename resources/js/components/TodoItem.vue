@@ -1,10 +1,16 @@
 <template>
     <div>
-        <button class="button is-text has-text-danger icon"
-                v-if="deleting"
+        <button class="button has-text-danger icon"
+                v-if="editing"
                 @click="deleteTodo">
 
             <i class="fas fa-trash-alt"></i>
+        </button>
+        <button class="button has-text-link icon"
+                v-if="editing"
+                @click="editTodo">
+
+            <i class="fas fa-edit"></i>
         </button>
 
         <label class="checkbox" :for="name">
@@ -19,7 +25,7 @@ export default {
     props: [
         'todo',
         'action',
-        'deleting',
+        'editing',
     ],
 
     data() {
@@ -55,6 +61,10 @@ export default {
     methods: {
         toggle(checked) {
             axios.patch(this.action, { completed: this.completed });
+        },
+
+        editTodo() {
+            console.log('editing', this.todo.id);
         },
 
         deleteTodo() {
