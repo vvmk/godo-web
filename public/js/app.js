@@ -345,9 +345,22 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('autofocus', {
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
 
+    data: {
+        newBoardField: ''
+    },
+
     components: {
         'board-show': __WEBPACK_IMPORTED_MODULE_2__views_BoardShow___default.a,
         'hero-nav': __WEBPACK_IMPORTED_MODULE_3__components_HeroNav___default.a
+    },
+
+    methods: {
+        controlW: function controlW() {
+            this.newBoardField = deleteLastWord(this.newBoardField);
+        },
+        controlU: function controlU() {
+            this.newBoardField = '';
+        }
     }
 
 });

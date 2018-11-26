@@ -11,11 +11,12 @@
 
                 <div class="control">
                     <input class="input"
-                    type="text"
-                    name="name"
-                    placeholder="New Board"
-                    @@keydown.ctrl.87="$event.target.value = $event.target.value.split(' ').slice(0, -1).join(' ') + ' '"
-                    @@keydown.ctrl.85="$event.target.value = ''">
+                           type="text"
+                           name="name"
+                           placeholder="New Board"
+                           v-model="newBoardField"
+                           @@keydown.ctrl.87="controlW"
+                           @@keydown.ctrl.85="controlU">
                 </div>
             </div>
 
@@ -37,17 +38,17 @@
             <div class="level">
 
                 <p class="level-left">
-                    <a class="item is-link subtitle is-3 has-text-primary" href="{{ $board->path() }}">{{ $board->name }}</a>
+                <a class="item is-link subtitle is-3 has-text-primary" href="{{ $board->path() }}">{{ $board->name }}</a>
                 </p>
 
                 <p class="level-right">
-                    <span class="level-item icon">
-                        <i class="far fa-star"></i>
-                    </span>
+                <span class="level-item icon">
+                    <i class="far fa-star"></i>
+                </span>
 
-                    <span class="level-item icon">
-                        <i class="fas fa-list-ul"></i>&nbsp;<strong>{{ count($board->todos) }}</strong>
-                    </span>
+                <span class="level-item icon">
+                    <i class="fas fa-list-ul"></i>&nbsp;<strong>{{ count($board->todos) }}</strong>
+                </span>
                 </p>
 
             </div>

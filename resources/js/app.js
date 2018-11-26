@@ -27,9 +27,23 @@ Vue.directive('autofocus', {
 new Vue({
     el: '#app',
 
+    data: {
+        newBoardField: '',
+    },
+
     components: {
         'board-show': BoardShow,
         'hero-nav': HeroNav,
+    },
+
+    methods: {
+        controlW() {
+            this.newBoardField = deleteLastWord(this.newBoardField);
+        },
+
+        controlU() {
+            this.newBoardField = '';
+        },
     },
 
 });
