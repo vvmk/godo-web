@@ -43,19 +43,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['todo', 'action', 'editing'],
+    props: ['todo', 'action', 'EditMode'],
 
     data: function data() {
         return {
-            completed: false
+            completed: false,
+            editing: false,
+            editDescription: ''
         };
     },
     mounted: function mounted() {
         this.checked = !!this.todo.completed;
     },
 
+
+    watch: {
+        EditMode: function EditMode() {
+            this.editing = false;
+        }
+    },
 
     computed: {
         checked: {
@@ -80,7 +92,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.patch(this.action, { completed: this.completed });
         },
         editTodo: function editTodo() {
-            console.log('editing', this.todo.id);
+            console.log('edited: ', this.editDescription);
+
+            this.editing = false;
         },
         deleteTodo: function deleteTodo() {
             var _this = this;
@@ -92,6 +106,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 return console.log(error);
             });
+        },
+        toggleEditing: function toggleEditing() {
+            this.editing = !this.editing;
+            this.editDescription = this.description;
         }
     }
 });
@@ -116,7 +134,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         return {
             showTimestamp: false,
             showBlame: false,
-            editing: false,
+            editMode: false,
             todoField: '',
             todos: []
         };
@@ -283,7 +301,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.editing
+    _vm.EditMode
       ? _c(
           "button",
           {
@@ -294,62 +312,106 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.editing
+    _vm.EditMode
       ? _c(
           "button",
           {
-            staticClass: "button has-text-link icon",
-            on: { click: _vm.editTodo }
+            class: {
+              button: true,
+              "has-text-link": !_vm.editing,
+              icon: true,
+              "is-link": _vm.editing
+            },
+            on: { click: _vm.toggleEditing }
           },
           [_c("i", { staticClass: "fas fa-edit" })]
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("label", { staticClass: "checkbox", attrs: { for: _vm.name } }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.checked,
-            expression: "checked"
-          }
-        ],
-        attrs: { type: "checkbox", id: _vm.name },
-        domProps: {
-          checked: Array.isArray(_vm.checked)
-            ? _vm._i(_vm.checked, null) > -1
-            : _vm.checked
-        },
-        on: {
-          change: [
-            function($event) {
-              var $$a = _vm.checked,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = null,
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 && (_vm.checked = $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-                }
-              } else {
-                _vm.checked = $$c
+    !_vm.editing
+      ? _c("label", { staticClass: "checkbox", attrs: { for: _vm.name } }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.checked,
+                expression: "checked"
               }
+            ],
+            attrs: { type: "checkbox", id: _vm.name },
+            domProps: {
+              checked: Array.isArray(_vm.checked)
+                ? _vm._i(_vm.checked, null) > -1
+                : _vm.checked
             },
-            function($event) {
-              _vm.toggle($event.target.value)
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.checked,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.checked = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.checked = $$c
+                  }
+                },
+                function($event) {
+                  _vm.toggle($event.target.value)
+                }
+              ]
             }
-          ]
-        }
-      }),
-      _vm._v(" "),
-      _c("span", { class: { strike: _vm.completed } }, [
-        _vm._v(_vm._s(_vm.description))
-      ])
+          }),
+          _vm._v(" "),
+          _c("span", { class: { strike: _vm.completed } }, [
+            _vm._v(_vm._s(_vm.description))
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("label", { staticClass: "checkbox" }, [
+      _vm.EditMode && _vm.editing
+        ? _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.editDescription,
+                expression: "editDescription"
+              }
+            ],
+            staticClass: "input is-small",
+            attrs: { type: "text" },
+            domProps: { value: _vm.editDescription },
+            on: {
+              keydown: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.editTodo($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.editDescription = $event.target.value
+              }
+            }
+          })
+        : _vm._e()
     ])
   ])
 }

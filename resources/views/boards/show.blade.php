@@ -43,8 +43,8 @@
                         <div class="level">
 
                             <div class="level-left">
-                                    <button :class="{'button': true, 'is-medium': true, 'icon': true, 'is-warning': editing}"
-                                                @@click="editing = !editing">
+                                    <button :class="{'button': true, 'is-medium': true, 'icon': true, 'is-warning': editMode}"
+                                                @@click="editMode = !editMode">
                                                 <i class="fas fa-broom"></i>
                                     </button>
                             </div>
@@ -73,7 +73,7 @@
 
                                     <todo-item :todo="todo" 
                                                 :action="'/todos/' + todo.id"
-                                                :editing="editing"
+                                                :edit-mode="editMode"
                                                 @@todo-deleted="removeFromList">
                                     </todo-item>
 

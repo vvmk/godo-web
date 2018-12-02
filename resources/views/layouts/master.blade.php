@@ -19,8 +19,6 @@
                 @include('layouts.nav')
             </hero-nav>
 
-            @include('layouts.hero')
-
             <section class="section">
                 <main class="container">
                     @yield('content')

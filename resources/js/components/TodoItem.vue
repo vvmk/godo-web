@@ -1,21 +1,25 @@
 <template>
     <div>
         <button class="button has-text-danger icon"
-                v-if="editing"
+                v-if="EditMode"
                 @click="deleteTodo">
 
             <i class="fas fa-trash-alt"></i>
         </button>
-        <button class="button has-text-link icon"
-                v-if="editing"
-                @click="editTodo">
+        <button :class='{ "button": true, "has-text-link": !editing, "icon": true, "is-link": editing }'
+               v-if="EditMode"
+               @click="toggleEditing">
 
             <i class="fas fa-edit"></i>
         </button>
 
-        <label class="checkbox" :for="name">
+        <label v-if="!editing" class="checkbox" :for="name">
             <input v-model="checked" type="checkbox" :id="name" @change="toggle($event.target.value)">
             <span :class="{'strike': completed}">{{ description }}</span>
+        </label>
+
+        <label class="checkbox">
+            <input v-if="EditMode && editing" @keydown.enter="editTodo" v-model="editDescription" class="input is-small" type="text" />
         </label>
     </div>
 </template>
@@ -25,17 +29,25 @@ export default {
     props: [
         'todo',
         'action',
-        'editing',
+        'EditMode',
     ],
 
     data() {
         return {
             completed: false,
+            editing: false,
+            editDescription: '',
         };
     },
 
     mounted() {
         this.checked = !!this.todo.completed;
+    },
+
+    watch: {
+        EditMode() {
+            this.editing = false;
+        },
     },
 
     computed: {
@@ -64,7 +76,9 @@ export default {
         },
 
         editTodo() {
-            console.log('editing', this.todo.id);
+            console.log('edited: ', this.editDescription);
+
+            this.editing = false;
         },
 
         deleteTodo() {
@@ -75,6 +89,11 @@ export default {
                     this.$emit('todo-deleted', id);
                 })
                 .catch(error => console.log(error));
+        },
+
+        toggleEditing() {
+            this.editing = !this.editing;
+            this.editDescription = this.description;
         },
     },
 };
