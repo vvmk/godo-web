@@ -47,6 +47,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['todo', 'action', 'EditMode'],
@@ -388,20 +397,40 @@ var render = function() {
                 rawName: "v-model",
                 value: _vm.editDescription,
                 expression: "editDescription"
+              },
+              {
+                name: "autofocus",
+                rawName: "v-autofocus",
+                value: true,
+                expression: "true"
               }
             ],
             staticClass: "input is-small",
-            attrs: { type: "text" },
+            attrs: { type: "text", autofocus: "" },
             domProps: { value: _vm.editDescription },
             on: {
-              keydown: function($event) {
-                if (
-                  !("button" in $event) &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
+              keydown: [
+                function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.editTodo($event)
+                },
+                function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "esc", 27, $event.key, "Escape")
+                  ) {
+                    return null
+                  }
+                  _vm.editing = false
                 }
-                return _vm.editTodo($event)
+              ],
+              focus: function($event) {
+                $event.target.setSelectionRange(0, _vm.editDescription.length)
               },
               input: function($event) {
                 if ($event.target.composing) {

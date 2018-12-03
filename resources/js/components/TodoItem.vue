@@ -19,7 +19,16 @@
         </label>
 
         <label class="checkbox">
-            <input v-if="EditMode && editing" @keydown.enter="editTodo" v-model="editDescription" class="input is-small" type="text" />
+            <input class="input is-small"
+                type="text"
+                v-if="EditMode && editing"
+                v-model="editDescription"
+                @keydown.enter="editTodo"
+                @keydown.esc="editing = false"
+                autofocus
+                v-autofocus="true"
+                @focus="$event.target.setSelectionRange(0, editDescription.length)"
+                />
         </label>
     </div>
 </template>
