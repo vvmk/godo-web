@@ -382,13 +382,15 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span", { class: { strike: _vm.completed } }, [
-            _vm._v(_vm._s(_vm.description))
-          ])
+          _c(
+            "span",
+            { class: { "has-text-left": true, strike: _vm.completed } },
+            [_vm._v(_vm._s(_vm.description))]
+          )
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("label", { staticClass: "checkbox" }, [
+    _c("div", { staticClass: "control" }, [
       _vm.EditMode && _vm.editing
         ? _c("input", {
             directives: [
@@ -405,7 +407,7 @@ var render = function() {
                 expression: "true"
               }
             ],
-            staticClass: "input is-small",
+            staticClass: "input is-small is-expanded",
             attrs: { type: "text", autofocus: "" },
             domProps: { value: _vm.editDescription },
             on: {

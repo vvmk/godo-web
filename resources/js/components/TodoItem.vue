@@ -15,11 +15,11 @@
 
         <label v-if="!editing" class="checkbox" :for="name">
             <input v-model="checked" type="checkbox" :id="name" @change="toggle($event.target.value)">
-            <span :class="{'strike': completed}">{{ description }}</span>
+            <span :class="{ 'has-text-left': true, 'strike': completed}">{{ description }}</span>
         </label>
 
-        <label class="checkbox">
-            <input class="input is-small"
+        <div class="control">
+            <input class="input is-small is-expanded"
                 type="text"
                 v-if="EditMode && editing"
                 v-model="editDescription"
@@ -29,7 +29,7 @@
                 v-autofocus="true"
                 @focus="$event.target.setSelectionRange(0, editDescription.length)"
                 />
-        </label>
+        </div>
     </div>
 </template>
 
