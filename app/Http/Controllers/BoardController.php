@@ -88,7 +88,7 @@ class BoardController extends Controller
      * @return int[] of ids for the client to remove
      */
     public function cleanup(Board $board) {
-        //TODO: delete completed todos
-        dd($board);
+        $completed = $board->todos()->where('completed', '1')->get(['id']);
+        dd($completed);
     }
 }
