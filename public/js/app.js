@@ -176,6 +176,19 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                 }
             }
         },
+        deleteCompleted: function deleteCompleted(action) {
+            var _this2 = this;
+
+            axios.post(action, {}).then(function (response) {
+                console.log(response.data);
+
+                _this2.todos = _this2.todos.filter(function (t) {
+                    return response.data.includes(t.id);
+                });
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        },
         controlW: function controlW() {
             this.todoField = deleteLastWord(this.todoField);
         },

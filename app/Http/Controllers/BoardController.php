@@ -80,4 +80,15 @@ class BoardController extends Controller
     {
         //
     }
+
+    /**
+     * Remove all todos from this board marked 'completed'
+     *
+     * @param \App\Board $board
+     * @return int[] of ids for the client to remove
+     */
+    public function cleanup(Board $board) {
+        //TODO: delete completed todos
+        dd($board);
+    }
 }

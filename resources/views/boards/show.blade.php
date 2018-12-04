@@ -43,8 +43,13 @@
                         <div class="level">
 
                             <div class="level-left">
-                                    <button :class="{'button': true, 'is-medium': true, 'icon': true, 'is-warning': editMode}"
+                                    <button :class="{'level-item': true, 'button': true, 'is-medium': true, 'icon': true, 'is-warning': editMode}"
                                                 @@click="editMode = !editMode">
+                                                <i class="fas fa-toolbox"></i>
+                                    </button>
+                                    <button :class="{'level-item': true, 'button': true, 'is-medium': true, 'icon': true }"
+                                                   v-if="editMode"
+                                                   @@click="deleteCompleted('{{ $board->path() }}/cleanup')">
                                                 <i class="fas fa-broom"></i>
                                     </button>
                             </div>
