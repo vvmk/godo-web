@@ -49,7 +49,7 @@
                                     </button>
                                     <button :class="{'level-item': true, 'button': true, 'is-medium': true, 'icon': true }"
                                                    v-if="editMode"
-                                                   @@click="deleteCompleted('{{ $board->path() }}/cleanup')">
+                                                   @@click="deleteCompleted('/boards/{{ $board->id }}/cleanup')">
                                                 <i class="fas fa-broom"></i>
                                     </button>
                             </div>

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Board;
 use Illuminate\Http\Request;
+use App\Todo;
 
 class BoardController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('auth', ['only' => ['store', 'update', 'destroy']]);
+        $this->middleware('auth', ['only' => ['store', 'update', 'destroy', 'cleanup']]);
     }
 
     /**
@@ -88,7 +89,10 @@ class BoardController extends Controller
      * @return int[] of ids for the client to remove
      */
     public function cleanup(Board $board) {
-        $completed = $board->todos()->where('completed', '1')->get(['id']);
-        dd($completed);
+        $completedTodos = $board->todos()->where('completed', 't')->pluck('id')->toArray();
+
+        Todo::destroy($completedTodos);
+
+        return $completedTodos;
     }
 }

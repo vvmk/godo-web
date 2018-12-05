@@ -44,10 +44,9 @@ export default {
         deleteCompleted(action) {
             axios.post(action, {})
                 .then(response => {
-                    console.log(response.data);
 
                     this.todos = this.todos.filter(t => {
-                        return response.data.includes(t.id);
+                        return !response.data.includes(t.id);
                     });
                 })
                 .catch(error => console.log(error));
