@@ -71,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div v-for="todo in todos" class="level">
+                        <div v-for="todo in todos" :key="todo.id" class="level">
 
                             <div class="level-left">
                                 <div class="level-item">
