@@ -57,6 +57,10 @@ export default {
         EditMode() {
             this.editing = false;
         },
+
+        completed() {
+            console.log('completed changed: ', this.completed);
+        }
     },
 
     computed: {

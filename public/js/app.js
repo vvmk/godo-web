@@ -75,6 +75,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         EditMode: function EditMode() {
             this.editing = false;
+        },
+        completed: function completed() {
+            console.log('completed changed: ', this.completed);
         }
     },
 
