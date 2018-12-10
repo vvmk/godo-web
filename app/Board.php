@@ -23,7 +23,7 @@ class Board extends Model
     }
 
     public function todos() {
-        return $this->hasMany(Todo::class)->sortByDesc('created_at');
+        return $this->hasMany(Todo::class)->orderBy('created_at', 'desc');
     }
 
     public function addTodo($attributes) {
