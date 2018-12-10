@@ -25,7 +25,7 @@ export default {
             if (this.todoField) {
                 axios.post(action, { description: this.todoField })
                     .then(response => {
-                        this.todos.push(response.data);
+                        this.todos.unshift(response.data);
                         this.todoField = '';
                     })
                     .catch(error => console.log(error));

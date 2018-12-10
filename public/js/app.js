@@ -164,7 +164,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
             if (this.todoField) {
                 axios.post(action, { description: this.todoField }).then(function (response) {
-                    _this.todos.push(response.data);
+                    _this.todos.unshift(response.data);
                     _this.todoField = '';
                 }).catch(function (error) {
                     return console.log(error);
