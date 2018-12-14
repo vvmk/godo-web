@@ -79,7 +79,9 @@ class BoardController extends Controller
      */
     public function destroy(Board $board)
     {
-        //
+        $board->destroy();
+
+        return view('boards.index');
     }
 
     /**
