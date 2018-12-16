@@ -79,9 +79,9 @@ class BoardController extends Controller
      */
     public function destroy(Board $board)
     {
-        $board->destroy();
+        $board->delete();
 
-        return view('boards.index');
+        return redirect()->route('boards');
     }
 
     /**
